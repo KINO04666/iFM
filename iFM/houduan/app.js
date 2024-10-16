@@ -7,8 +7,8 @@ const cors = require('cors');
 const app = express();
 const PORT = 3000;
 const SECRET_KEY = "secretkey"; // JWT密钥
+
 app.use(cors());
-// 使用body-parser解析请求体
 app.use(bodyParser.json());
 
 // 创建MySQL连接池
@@ -83,6 +83,19 @@ app.post('/login', (req, res) => {
                 username: user.email // 假设没有 username 字段，用 email 代替
             });
         });
+    });
+});
+
+// 新增：获取文章的API端点
+app.get('/articles', (req, res) => {
+    const getArticlesQuery = `SELECT * FROM articles ORDER BY created_at DESC`;
+    db.query(getArticlesQuery, (err, results) => {
+        if (err) {
+            console.error('Error fetching articles:', err);
+            return res.status(500).json({ msg: '服务器错误' });
+        }
+
+        res.json(results);
     });
 });
 

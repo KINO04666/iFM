@@ -7,6 +7,8 @@
 		<link rel="stylesheet" href="css/all.css" />
 		<link rel="stylesheet" href="css/main.css" />
 		<link rel="stylesheet" href="css/player.css" />
+		<script src="js/jquery-2.1.0.js"></script>
+
 	</head>
 	<body>
 		<!---------s:头部------------->
@@ -171,64 +173,13 @@
 							<h3><i class="glyphicon glyphicon-bullhorn"></i>小编推荐</h3>
 							<p><a href="">全部</a></p>
 						</div>
-						<div class="inner_body">
-							<ul class="inner_list">
-								<li>
-									<div class="list_item_top">
-										<div class="item_pic">
-											<a href="#">
-												<img src="img/recommond1.jpg" alt="十点读书" />
-												<span>十点读书</span>
-											</a>
-											<a id="icon-play" name="music/左宏元 - 幻化人形 蛾眉上香 青城山下白素贞 四句箴言.mp3" onclick="playMusic(this.name);" href="javascript:void(0)"><i class="glyphicon glyphicon-expand"></i></a>
-										</div>
-										<a class="title" href="">主播玮玮：性格不好，其实就是情商不</a>
-										<a class="user-name" href="">by：十点读书</a>
-									</div>
-									<p class="count-info">
-										<span><a href=""><i class="glyphicon glyphicon-play"></i>1000</a></span>
-										<span><a href=""><i class="glyphicon glyphicon-heart"></i>1000</a></span>
-										<span><a href=""><i class="glyphicon glyphicon-comment"></i>1000</a></span>
-									</p>
-								</li>
-								<li>
-									<div class="list_item_top">
-										<div class="item_pic">
-											<a href="#">
-												<img src="img/recommond1.jpg" alt="十点读书" />
-												<span>十点读书</span>
-											</a>
-											<a id="icon-play" name="music/FORMOSA - 天也不懂情.mp3" onclick="playMusic(this.name);" href="javascript:void(0)"><i class="glyphicon glyphicon-expand"></i></a>
-										</div>
-										<a class="title" href="">主播玮玮：性格不好，其实就是情商不</a>
-										<a class="user-name" href="">by：十点读书</a>
-									</div>
-									<p class="count-info">
-										<span><a href=""><i class="glyphicon glyphicon-play"></i>1000</a></span>
-										<span><a href=""><i class="glyphicon glyphicon-heart"></i>1000</a></span>
-										<span><a href=""><i class="glyphicon glyphicon-comment"></i>1000</a></span>
-									</p>
-								</li>
-								<li>
-									<div class="list_item_top">
-										<div class="item_pic">
-											<a href="#">
-												<img src="img/recommond1.jpg" alt="十点读书" />
-												<span>十点读书</span>
-											</a>
-											<a id="icon-play" name="music/庄蕙如 - 雨伞是媒红.mp3" onclick="playMusic(this.name);" href="javascript:void(0)"><i class="glyphicon glyphicon-expand"></i></a>
-										</div>
-										<a class="title" href="">主播玮玮：性格不好，其实就是情商不</a>
-										<a class="user-name" href="">by：十点读书</a>
-									</div>
-									<p class="count-info">
-										<span><a href=""><i class="glyphicon glyphicon-play"></i>1000</a></span>
-										<span><a href=""><i class="glyphicon glyphicon-heart"></i>1000</a></span>
-										<span><a href=""><i class="glyphicon glyphicon-comment"></i>1000</a></span>
-									</p>
-								</li>
-							</ul>
-						</div>
+						<!-- 小编推荐部分 -->
+							<div class="inner_body">
+  								<ul class="inner_list" id="article-list">
+     								   <!-- 文章将通过JavaScript动态插入这里 -->
+   								</ul>
+							</div>
+
 					</div>
 				</div>
 				<!--侧边-->
