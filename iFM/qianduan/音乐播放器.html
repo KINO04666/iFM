@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>音乐播放器</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/font-awesome/4.7.0/css/font-awesome.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #333;
+        }
+
+        .player-warp {
+            position: relative;
+        }
+
+        .player-warp .player-control {
+            width: 360px;
+            height: 80px;
+            padding: 20px 30px;
+            background-color: #fff;
+            border-radius: 15px;
+            display: flex;
+            justify-content: space-between;
+            z-index: 10;
+        }
+
+        .player-control .cover {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #fff;
+            margin-top: -60px;
+            padding: 6px;
+            position: relative;
+            animation: zhuan 5s infinite linear;
+            animation-play-state: paused;
+        }
+
+        .cover img {
+            width: 100%;
+            border-radius: 50%;
+        }
+
+        .player-control .control {
+            width: 60%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .control i {
+            width: 40px;
+            height: 40px;
+            text-align: center;
+            line-height: 40px;
+            font-size: 26px;
+            color: #b3b0b0;
+            cursor: pointer;
+            transition: all 0.4s;
+        }
+
+        .control i:hover {
+            border-radius: 6px;
+            background-color: rgba(71, 70, 70, 0.2);
+            color: #fff;
+        }
+
+        .player-control .cover::before {
+            content: "";
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            background-color: #fff;
+        }
+
+        @keyframes zhuan {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 音乐播放器 -->
+    <div class="player-warp">
+        <!-- 歌曲信息卡片 -->
+        <div class="player-info"></div>
+        <!-- 音乐控制器 -->
+        <div class="player-control">
+            <!-- 封面唱片 -->
+            <div class="cover">
+                <img src="http://p2.music.126.net/9bVOooAY6U6EJLzpv1Fikw==/109951169682871673.jpg?param=300x300" alt="封面">
+            </div>
+            <!-- 控制按钮 -->
+            <div class="control">
+                <i class="fa fa-step-backward"></i>
+                <i class="fa fa-play"></i>
+                <i class="fa fa-step-forward"></i>
+                <i class="fa fa-reorder"></i>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
