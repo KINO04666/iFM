@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>音乐播放器</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/player2.css" />
+    <style>
+        /* 全屏播放器样式 */
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+        }
+
+        .player-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            background: url('img/player-background.jpg') no-repeat center center/cover;
+            position: relative;
+        }
+
+        .player-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+        }
+
+        .player-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .album-art {
+            width: 300px;
+            height: 300px;
+            border-radius: 15px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+        }
+
+        .song-title {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .song-author {
+            font-size: 1.2em;
+            color: #b3b3b3;
+            margin-bottom: 30px;
+        }
+
+        .controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .controls button {
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 2em;
+            margin: 0 15px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .controls button:hover {
+            color: #1db954;
+        }
+
+        .progress-container {
+            width: 80%;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .progress {
+            width: 100%;
+            height: 5px;
+            background: #404040;
+            border-radius: 2.5px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .progress-filled {
+            height: 100%;
+            background: #1db954;
+            width: 0%;
+            border-radius: 2.5px;
+        }
+
+        .time-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9em;
+            color: #b3b3b3;
+            margin-top: 5px;
+        }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            color: #ffffff;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .back-button:hover {
+            background: rgba(255, 255, 255, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .album-art {
+                width: 200px;
+                height: 200px;
+            }
+
+            .song-title {
+                font-size: 1.5em;
+            }
+
+            .controls button {
+                font-size: 1.5em;
+                margin: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="player-container">
+        <div class="player-overlay"></div>
+        <button class="back-button" onclick="goBack()">
+            <i class="glyphicon glyphicon-chevron-left"></i>
+        </button>
+        <div class="player-content">
+            <img id="album-art" class="album-art" src="img/default-album.jpg" alt="专辑封面" />
+            <h2 id="song-title" class="song-title">歌曲标题</h2>
+            <p id="song-author" class="song-author">作者名称</p>
+
+            <div class="controls">
+                <button id="prev-button" onclick="prevTrack()">
+                    <i class="glyphicon glyphicon-backward"></i>
+                </button>
+                <button id="play-button" onclick="togglePlay()">
+                    <i class="glyphicon glyphicon-play"></i>
+                </button>
+                <button id="next-button" onclick="nextTrack()">
+                    <i class="glyphicon glyphicon-forward"></i>
+                </button>
+            </div>
+
+            <div class="progress-container">
+                <div class="progress" id="progress-bar" onclick="setProgress(event)">
+                    <div class="progress-filled" id="progress-filled"></div>
+                </div>
+                <div class="time-info">
+                    <span id="current-time">0:00</span>
+                    <span id="total-time">0:00</span>
+                </div>
+            </div>
+
+            <audio id="audio-player" src="" preload="metadata"></audio>
+        </div>
+    </div>
+
+    <script src="js/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        $(document).ready(function() {
+            // 获取URL中的参数
+            const urlParams = new URLSearchParams(window.location.search);
+            const audioPath = urlParams.get('audio');
+            const title = urlParams.get('title');
+            const author = urlParams.get('author') || '未知作者';
+            const albumArt = urlParams.get('album') || 'img/default-album.jpg';
+            const articleId = urlParams.get('article_id'); // 确保获取 article_id 参数
+
+            if(audioPath) {
+                $('#audio-player').attr('src', decodeURIComponent(audioPath));
+            }
+
+            if(title) {
+                $('#song-title').text(decodeURIComponent(title));
+            }
+
+            if(author) {
+                $('#song-author').text(decodeURIComponent(author));
+            }
+
+            if(albumArt) {
+                $('#album-art').attr('src', decodeURIComponent(albumArt));
+            }
+
+            const audioPlayer = document.getElementById('audio-player');
+            const playButton = document.getElementById('play-button');
+            const progressBar = document.getElementById('progress-bar');
+            const progressFilled = document.getElementById('progress-filled');
+            const currentTimeEl = document.getElementById('current-time');
+            const totalTimeEl = document.getElementById('total-time');
+
+            // 播放/暂停功能
+            function togglePlay() {
+                if (audioPlayer.paused) {
+                    audioPlayer.play();
+                    playButton.innerHTML = '<i class="glyphicon glyphicon-pause"></i>';
+                } else {
+                    audioPlayer.pause();
+                    playButton.innerHTML = '<i class="glyphicon glyphicon-play"></i>';
+                }
+            }
+
+            playButton.addEventListener('click', togglePlay);
+
+            // 播放事件监听器，增加播放量
+            audioPlayer.addEventListener('play', function() {
+                if (articleId) {
+                    fetch(`http://localhost:3000/articles/${articleId}/play`, {
+                        method: 'POST'
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        console.log(data.msg);
+                        // 可选：更新播放量显示
+                        // 如果需要在播放器页面显示播放量，可以在此处更新相关元素
+                    })
+                    .catch(err => {
+                        console.error('播放量增加失败:', err);
+                    });
+                }
+            });
+
+            // 更新进度条
+            audioPlayer.addEventListener('timeupdate', updateProgress);
+            audioPlayer.addEventListener('loadedmetadata', function() {
+                totalTimeEl.textContent = formatTime(audioPlayer.duration);
+            });
+
+            function updateProgress() {
+                const percent = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+                progressFilled.style.width = percent + '%';
+                currentTimeEl.textContent = formatTime(audioPlayer.currentTime);
+            }
+
+            // 设置进度
+            function setProgress(e) {
+                const width = this.clientWidth;
+                const clickX = e.offsetX;
+                const duration = audioPlayer.duration;
+
+                audioPlayer.currentTime = (clickX / width) * duration;
+            }
+
+            progressBar.addEventListener('click', setProgress);
+
+            // 格式化时间
+            function formatTime(seconds) {
+                const minutes = Math.floor(seconds / 60);
+                const secs = Math.floor(seconds % 60);
+                return `${minutes}:${secs < 10 ? '0' : ''}${secs}`;
+            }
+
+            // 返回按钮功能
+            window.goBack = function() {
+                window.history.back();
+            }
+
+            // 前后曲目功能（需要后端支持或前端预定义曲目列表）
+            window.prevTrack = function() {
+                // TODO: 实现上一曲功能
+                alert('上一曲功能尚未实现');
+            }
+
+            window.nextTrack = function() {
+                // TODO: 实现下一曲功能
+                alert('下一曲功能尚未实现');
+            }
+        });
+    </script>
+</body>
+</html>

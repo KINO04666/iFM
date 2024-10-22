@@ -1,0 +1,144 @@
+/* 全屏播放器样式 */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+}
+
+.player-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background: url('../img/player-background.jpg') no-repeat center center/cover;
+    position: relative;
+}
+
+.player-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.player-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+.album-art {
+    width: 300px;
+    height: 300px;
+    border-radius: 15px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+    margin-bottom: 20px;
+    transition: transform 0.3s;
+}
+
+.album-art:hover {
+    transform: scale(1.05);
+}
+
+.song-title {
+    font-size: 2em;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.song-author {
+    font-size: 1.2em;
+    color: #b3b3b3;
+    margin-bottom: 30px;
+}
+
+.controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.controls button {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 2em;
+    margin: 0 15px;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.controls button:hover {
+    color: #1db954;
+}
+
+.progress-container {
+    width: 80%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.progress {
+    width: 100%;
+    height: 5px;
+    background: #404040;
+    border-radius: 2.5px;
+    cursor: pointer;
+    position: relative;
+}
+
+.progress-filled {
+    height: 100%;
+    background: #1db954;
+    width: 0%;
+    border-radius: 2.5px;
+}
+
+.time-info {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9em;
+    color: #b3b3b3;
+    margin-top: 5px;
+}
+
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: #ffffff;
+    font-size: 1.5em;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.back-button:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+@media (max-width: 768px) {
+    .album-art {
+        width: 200px;
+        height: 200px;
+    }
+
+    .song-title {
+        font-size: 1.5em;
+    }
+
+    .controls button {
+        font-size: 1.5em;
+        margin: 0 10px;
+    }
+}

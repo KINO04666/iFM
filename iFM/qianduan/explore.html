@@ -1,266 +1,268 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="UTF-8">
-		<title>FM首页</title>
-		<link rel="stylesheet" href="css/bootstrap.min.css" />
-		<link rel="stylesheet" href="css/all.css" />
-		<link rel="stylesheet" href="css/main.css" />
-		<link rel="stylesheet" href="css/player.css" />
-		<script src="js/jquery-2.1.0.js"></script>
 
-	</head>
-	<body>
-		<!---------s:头部------------->
-		<header>
-			<div class="nav-top">
-				<a class="logo" href="explore.html"><img src="img/logo.png"/></a>
-				<div class="main_nav">
-					<!--s:主导航-->
-					<nav>
-						<ul>
-							<li><a href="#">发现</a></li>
-							<li><a href="./my.html">我的</a></li>						
+<head>
+	<meta charset="UTF-8">
+	<title>FM首页</title>
+	<link rel="stylesheet" href="css/bootstrap.min.css" />
+	<link rel="stylesheet" href="css/all.css" />
+	<link rel="stylesheet" href="css/main.css" />
+	<link rel="stylesheet" href="css/player.css" />
+	<script src="js/jquery-2.1.0.js"></script>
+
+</head>
+
+<body>
+	<!---------s:头部------------->
+	<header>
+		<div class="nav-top">
+			<a class="logo" href="explore.html"><img src="img/logo.png" /></a>
+			<div class="main_nav">
+				<!--s:主导航-->
+				<nav>
+					<ul>
+						<li><a href="#">发现</a></li>
+						<li><a href="./my.html">我的</a></li>
+					</ul>
+				</nav>
+				<!--e:主导航-->
+				<!--s:搜索-->
+				<div class="search">
+					<form action="" method="post">
+						<input id="seac" onblur="suggest_list_toggle();" onfocus="suggest_list_toggle();" type="text"
+							placeholder="搜索声音、专辑、用户" name="search" autocomplete="off" />
+						<button id="btn-seac" type="submit" class="btn glyphicon glyphicon-search"></button>
+					</form>
+					<div class="suggest-lsit">
+						<ul id="ul-suggest-list">
+							<li class="suggest-item">on day in 端午</li>
+							<li class="suggest-item">千年等一回</li>
+							<li class="suggest-item">渡情</li>
+							<li class="suggest-item">幻化人性</li>
+							<li class="suggest-item">西湖雨又风</li>
+							<li class="suggest-item">纠缠</li>
 						</ul>
-					</nav>
-					<!--e:主导航-->
-					<!--s:搜索-->
-					<div class="search">
-						<form action="" method="post">
-							<input id="seac" onblur="suggest_list_toggle();" onfocus="suggest_list_toggle();" type="text" placeholder="搜索声音、专辑、用户" name="search" autocomplete="off"/>
-							<button id="btn-seac" type="submit" class="btn glyphicon glyphicon-search"></button>
-						</form>
-						<div class="suggest-lsit">
-							<ul id="ul-suggest-list">
-								<li class="suggest-item">on day in 端午</li>
-								<li class="suggest-item">千年等一回</li>
-								<li class="suggest-item">渡情</li>
-								<li class="suggest-item">幻化人性</li>
-								<li class="suggest-item">西湖雨又风</li>
-								<li class="suggest-item">纠缠</li>
-							</ul>
-						</div>
-					</div>
-					<!--e:搜索-->
-				</div>
-				<!--s:上传-->
-				<div id="upload_wrap">
-					<div class="upload">
-						<div class="upload_btn" onclick="upload_list_toggle();">
-							<span class="glyphicon glyphicon-send"></span>
-							<span>上传</span>
-						</div>
-					</div>
-					<div id="upload_list">
-						<span id="arrowUP" class="glyphicon glyphicon-chevron-up"></span>
-						<a href="">
-							<span class="glyphicon glyphicon-chevron-down"></span><br/>
-							<span>主播V认证</span>
-						</a>
-						<a href="">
-							<span class="glyphicon glyphicon-stats"></span><br/>
-							<span>主播管理中心</span>
-						</a>
-						<a href="">
-							<span class="glyphicon glyphicon-send"></span><br/>
-							<span>上传声音</span>
-						</a>
 					</div>
 				</div>
-				<!--e:上传-->
+				<!--e:搜索-->
 			</div>
-		</header>
-		
-		<!---------s:主体------------->
-		<div class="wrap_main">
-			<div id="sub_nav">
-				<ul class="ul_subnav">
-					<li><a class="active" href="#">热门推荐</a></li>
-					<li><a href="musicType.html">节目分类</a></li>
-					<li><a href="#">声音广场</a></li>
-					<li><a href="#">人气主播</a></li>
-				</ul>
-				<span><a onclick="showLogBig()" href="#">登录|注册</a></span>
-			</div>
-			<!--s:轮播图-->
-			<section class="lunbo_wrap">
-				<div class="contain_pic">
-					<div class="sub">
-						<div class="row-fluid">
-							<div class="carousel slide" id="carousel-774211">
-								<ol class="carousel-indicators">
-									<li data-slide-to="0" data-target="#carousel-774211"></li>
-									<li data-slide-to="1" data-target="#carousel-774211" class="active"></li>
-									<li data-slide-to="2" data-target="#carousel-774211"></li>
-									<li data-slide-to="3" data-target="#carousel-774211"></li>
-									<li data-slide-to="4" data-target="#carousel-774211"></li>
-									<li data-slide-to="5" data-target="#carousel-774211"></li>
-								</ol>
-								<div class="carousel-inner">
-									<div class="item">
-										<img alt="" src="img/lunbo1.jpg" />
-									</div>
-									<div class="item active">
-										<img alt="" src="img/lunbo2.jpg" />
-									</div>
-									<div class="item">
-										<img alt="" src="img/lunbo3.jpg" />
-									</div>
-									<div class="item">
-										<img alt="" src="img/lunbo4.jpg" />
-									</div>
-									<div class="item">
-										<img alt="" src="img/lunbo5.jpg" />
-									</div>
-									<div class="item">
-										<img alt="" src="img/lunbo6.jpg" />
-									</div>
-								</div> 
-								<a data-slide="prev" href="#carousel-774211" class="left carousel-control"><span class="glyphicon glyphicon-chevron-left"></span></a> 
-								<a data-slide="next" href="#carousel-774211" class="right carousel-control"><span class="glyphicon glyphicon-chevron-right"></span></a>
-							</div>
-						</div>
-					</div>
-					<!--侧边-->
-					<div class="zhubo_aside">
-						<div >
-							<div>
-								<h3><i style="color: #ff4611;" class="glyphicon glyphicon-fire"></i>热门电台</h3>
-							</div>
-							<hr/>
-							<div>
-								<ul>
-									<li>
-										<div class="zhubo">
-											<img src="img/recommond3.jpg"/>
-										</div>.
-										<div class="zhubo_cinfo">
-											<a href="#">cctv1</a>
-											<a href="#">312312</a>
-										</div>
-									</li>
-									<li>
-										<div class="zhubo">
-											<img src="img/recommond3.jpg"/>
-										</div>.
-										<div class="zhubo_cinfo">
-											<a href="#">cctv2</a>
-											<a href="#">65464</a>
-										</div>
-									</li>
-									<li>
-										<div class="zhubo">
-											<img src="img/recommond3.jpg"/>
-										</div>.
-										<div class="zhubo_cinfo">
-											<a href="#">cctv3</a>
-											<a href="#">89797</a>
-										</div>
-									</li>
-								</ul>
-							</div>
-						</div>
+			<!--s:上传-->
+			<div id="upload_wrap">
+				<div class="upload">
+					<div class="upload_btn" onclick="upload_list_toggle();">
+						<span class="glyphicon glyphicon-send"></span>
+						<span>上传</span>
 					</div>
 				</div>
-			</section>
-			<!--e:录播图-->
-			<!--s:主题区-->
-			<section class="main">
-				<!--主题-->
-				<div class="main_inner">
-					<div class="inner">
-						<div class="inner_head">
-							<h3><i class="glyphicon glyphicon-bullhorn"></i>小编推荐</h3>
-							<p><a href="">全部</a></p>
-						</div>
-						<!-- 小编推荐部分 -->
-							<div class="inner_body">
-  								<ul class="inner_list" id="article-list">
-     								   <!-- 文章将通过JavaScript动态插入这里 -->
-   								</ul>
-							</div>
+				<div id="upload_list">
+					<span id="arrowUP" class="glyphicon glyphicon-chevron-up"></span>
+					<a href="">
+						<span class="glyphicon glyphicon-chevron-down"></span><br />
+						<span>主播V认证</span>
+					</a>
+					<a href="">
+						<span class="glyphicon glyphicon-stats"></span><br />
+						<span>主播管理中心</span>
+					</a>
+					<a href="">
+						<span class="glyphicon glyphicon-send"></span><br />
+						<span>上传声音</span>
+					</a>
+				</div>
+			</div>
+			<!--e:上传-->
+		</div>
+	</header>
 
+	<!---------s:主体------------->
+	<div class="wrap_main">
+		<div id="sub_nav">
+			<ul class="ul_subnav">
+				<li><a class="active" href="#">热门推荐</a></li>
+				<li><a href="musicType.html">节目分类</a></li>
+				<li><a href="#">声音广场</a></li>
+				<li><a href="#">人气主播</a></li>
+			</ul>
+			<span><a onclick="showLogBig()" href="#">登录|注册</a></span>
+		</div>
+		<!--s:轮播图-->
+		<section class="lunbo_wrap">
+			<div class="contain_pic">
+				<div class="sub">
+					<div class="row-fluid">
+						<div class="carousel slide" id="carousel-774211">
+							<ol class="carousel-indicators">
+								<li data-slide-to="0" data-target="#carousel-774211"></li>
+								<li data-slide-to="1" data-target="#carousel-774211" class="active"></li>
+								<li data-slide-to="2" data-target="#carousel-774211"></li>
+								<li data-slide-to="3" data-target="#carousel-774211"></li>
+								<li data-slide-to="4" data-target="#carousel-774211"></li>
+								<li data-slide-to="5" data-target="#carousel-774211"></li>
+							</ol>
+							<div class="carousel-inner">
+								<div class="item">
+									<img alt="" src="img/lunbo1.jpg" />
+								</div>
+								<div class="item active">
+									<img alt="" src="img/lunbo2.jpg" />
+								</div>
+								<div class="item">
+									<img alt="" src="img/lunbo3.jpg" />
+								</div>
+								<div class="item">
+									<img alt="" src="img/lunbo4.jpg" />
+								</div>
+								<div class="item">
+									<img alt="" src="img/lunbo5.jpg" />
+								</div>
+								<div class="item">
+									<img alt="" src="img/lunbo6.jpg" />
+								</div>
+							</div>
+							<a data-slide="prev" href="#carousel-774211" class="left carousel-control"><span
+									class="glyphicon glyphicon-chevron-left"></span></a>
+							<a data-slide="next" href="#carousel-774211" class="right carousel-control"><span
+									class="glyphicon glyphicon-chevron-right"></span></a>
+						</div>
 					</div>
 				</div>
 				<!--侧边-->
-				<div class="main_aside">
-					<div id="inner">
+				<div class="zhubo_aside">
+					<div>
 						<div>
-							<h3>咨讯</h3>
+							<h3><i style="color: #ff4611;" class="glyphicon glyphicon-fire"></i>热门电台</h3>
 						</div>
-						<hr/>
+						<hr />
 						<div>
 							<ul>
-								<li><span>1</span><a href="">【国际风云】英国投票决定</a></li>
-								<li><span>2</span><a href="">日本为何没有“滴滴打车” </a></li>
-								<li><span>3</span><a href="">【国内要闻】湖南宜章：宜</a></li>
-								<li><span>4</span><a href="">【国际风云】英国：卡梅伦</a></li>
-								<li><span>5</span><a href="">【国际风云】朝鲜举行大规</a></li>
-								<li><span>6</span><a href="">【国内要闻】国家网信办发</a></li>
-								<li><span>7</span><a href="">【国际风云】美国马里兰再</a></li>
+								<li>
+									<div class="zhubo">
+										<img src="img/recommond3.jpg" />
+									</div>.
+									<div class="zhubo_cinfo">
+										<a href="#">cctv1</a>
+										<a href="#">312312</a>
+									</div>
+								</li>
+								<li>
+									<div class="zhubo">
+										<img src="img/recommond3.jpg" />
+									</div>.
+									<div class="zhubo_cinfo">
+										<a href="#">cctv2</a>
+										<a href="#">65464</a>
+									</div>
+								</li>
+								<li>
+									<div class="zhubo">
+										<img src="img/recommond3.jpg" />
+									</div>.
+									<div class="zhubo_cinfo">
+										<a href="#">cctv3</a>
+										<a href="#">89797</a>
+									</div>
+								</li>
 							</ul>
 						</div>
 					</div>
 				</div>
-			</section>
-			<!--e:主题区-->
-		</div>
-		<!----------e:主体------------->
-		<!--s:音乐播放器区-->
-		<div class="music_panle">
-			<audio id="audio_player" src="music/FORMOSA - 前世今生.mp3" preload="metadata" controls="controls" class="player" >
-				您的浏览器不支持 audio 标签。
-			</audio>
-			<span class="songInfo">
-				<a id="song_name" href="javascript:void(0);">歌曲名:</a>
-			</span>
-			<span class="album">
-				<img id="album_img" src="img/recommond2.jpg"/>
-				<span id="playState" class="glyphicon glyphicon-play"></span>
-			</span>
-			<span id="btn_pullout_panel" >
-				<i class="glyphicon glyphicon-chevron-right"></i>
-			</span>
-		</div>
-		<!--e:音乐播放器区-->
-		<!--s:登录区-->
-		<div class="zhezhaoceng">
-			<div class="login_wrap">
-				<div class="closeLog" align="right">
-					<i id="closeLog" class="glyphicon glyphicon-remove"></i>
+			</div>
+		</section>
+		<!--e:录播图-->
+		<!--s:主题区-->
+		<section class="main">
+			<!--主题-->
+			<div class="main_inner">
+				<div class="inner">
+					<div class="inner_head">
+						<h3><i class="glyphicon glyphicon-bullhorn"></i>内容</h3>
+						<p><a href="">全部</a></p>
+					</div>
+					<!-- 小编推荐部分 -->
+					<div class="inner_body">
+						<ul class="inner_list" id="article-list">
+							<!-- 文章将通过JavaScript动态插入这里 -->
+						</ul>
+					</div>
+
 				</div>
-				<div class="logo_wrap">
-					<img src="img/logo.png" alt="FM Logo" />
-				</div>
-				<!-- 登录表单 -->
-				<div id="loginForm">
-					<h4 id="formTitle">登录</h4>
-					<form id="authForm">
-						<input type="text" id="authEmail" placeholder="邮箱或手机号" required />
-						<input type="password" id="authPassword" placeholder="密码" required />
-						<input type="submit" value="登录" />
-					</form>
-					<div id="formFooter">
-						<p>没有账号？<a id="formFooter" href="javascript:void(0)">注册！</a></p>
+			</div>
+			<!--侧边-->
+			<!-- 咨询模块 -->
+			<div class="main_aside">
+				<div id="inner">
+					<div>
+						<h3>咨讯</h3>
+					</div>
+					<hr />
+					<div>
+						<ul id="news-list">
+							<!-- 新闻将通过JavaScript动态插入这里 -->
+						</ul>
 					</div>
 				</div>
 			</div>
-		</div>
-		<!--e:登录区-->
-		<!---------s:脚部------------->
-		<footer>
-		 	<div> <!--简介-->
-		 		<p>
-		 			FM，听你想听，给你精彩。解放你的眼睛，解放你的双手，用你的耳朵，聆听您的心灵，释放自我，享受自我.在<br>
-		 			这个喧嚣的社会，静下心来聆听自我，你可以做声音的主人，只需加入我们的声音主播，你的声音便会传遍天下，<br>
-		 			彼此间倾听各自的内心深处的声音。让我们一起享受灵蛇FM带给我们的每一天的精彩.
-				</p>
+
+		</section>
+		<!--e:主题区-->
+	</div>
+	<!----------e:主体------------->
+	<!--s:音乐播放器区-->
+	<div class="music_panle">
+		<audio id="audio_player" src="music/FORMOSA - 前世今生.mp3" preload="metadata" controls="controls" class="player">
+			您的浏览器不支持 audio 标签。
+		</audio>
+		<span class="songInfo">
+			<a id="song_name" href="javascript:void(0);">歌曲名:</a>
+		</span>
+		<span class="album">
+			<img id="album_img" src="img/recommond2.jpg" />
+			<span id="playState" class="glyphicon glyphicon-play"></span>
+		</span>
+		<span id="btn_pullout_panel">
+			<i class="glyphicon glyphicon-chevron-right"></i>
+		</span>
+	</div>
+	<!--e:音乐播放器区-->
+	<!--s:登录区-->
+	<div class="zhezhaoceng">
+		<div class="login_wrap">
+			<div class="closeLog" align="right">
+				<i id="closeLog" class="glyphicon glyphicon-remove"></i>
 			</div>
-		</footer>
-		<script src="js/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/script.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/player.js" type="text/javascript" charset="utf-8"></script>
-		<script src="js/login.js" type="text/javascript" charset="utf-8"></script>
-	</body>
+			<div class="logo_wrap">
+				<img src="img/logo.png" alt="FM Logo" />
+			</div>
+			<!-- 登录表单 -->
+			<div id="loginForm">
+				<h4 id="formTitle">登录</h4>
+				<form id="authForm">
+					<input type="text" id="authEmail" placeholder="邮箱或手机号" required />
+					<input type="password" id="authPassword" placeholder="密码" required />
+					<input type="submit" value="登录" />
+				</form>
+				<div id="formFooter">
+					<p>没有账号？<a id="formFooter" href="javascript:void(0)">注册！</a></p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!--e:登录区-->
+	<!---------s:脚部------------->
+	<footer>
+		<div> <!--简介-->
+			<p>
+				FM，听你想听，给你精彩。解放你的眼睛，解放你的双手，用你的耳朵，聆听您的心灵，释放自我，享受自我.在<br>
+				这个喧嚣的社会，静下心来聆听自我，你可以做声音的主人，只需加入我们的声音主播，你的声音便会传遍天下，<br>
+				彼此间倾听各自的内心深处的声音。让我们一起享受灵蛇FM带给我们的每一天的精彩.
+			</p>
+		</div>
+	</footer>
+	<script src="js/jquery-2.1.0.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/script.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/player.js" type="text/javascript" charset="utf-8"></script>
+	<script src="js/login.js" type="text/javascript" charset="utf-8"></script>
+</body>
+
 </html>
