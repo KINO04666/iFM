@@ -516,17 +516,5 @@ npm install
 4. 推送到分支 (`git push origin feature/YourFeature`)。
 5. 提交 Pull Request。
 
-## 许可证
-
-该项目使用 [MIT 许可证](LICENSE)。
-
-## 联系方式
-
-如有任何问题或建议，请联系：
-
-- **邮箱**: your.email@example.com
-- **GitHub**: [yourusername](https://github.com/yourusername)
-
----
 
 感谢您使用FM音乐播放器项目！希望它能为您带来良好的音乐体验。
