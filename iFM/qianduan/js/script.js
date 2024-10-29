@@ -1,30 +1,35 @@
 $(window).load(function(){
-	var sug=$('.suggest-item');
-	for(var i=0;i<sug.length;i++){
-		sug[i].onclick=function(e){
-			$('#seac').val(e.target.innerHTML);
-		};
-	}
-	$('#closeLog').click(function(){
-		$('.zhezhaoceng').css("display","none")
-	});
+    var sug = $('.suggest-item');
+    for(var i = 0; i < sug.length; i++){
+        sug[i].onclick = function(e){
+            $('#seac').val(e.target.innerHTML);
+        };
+    }
+    $('#closeLog').click(function(){
+        $('.zhezhaoceng').css("display","none");
+    });
 });
+
 function suggest_list_toggle(){
-	$('#ul-suggest-list').slideToggle().css({"border":"solid 1px lightblue"});
+    $('#ul-suggest-list').slideToggle().css({"border":"solid 1px lightblue"});
 }
+
 function upload_list_toggle(){
-	$('#upload_list').toggle();
+    $('#upload_list').toggle();
 }
+
 function playMusic(data){
-	alert(data);
-	var ply=document.getElementById('audio_player');
-		ply.src=data;
-		ply.play();
-	$('#song_name').text("歌曲名:"+data);
+    alert(data);
+    var ply = document.getElementById('audio_player');
+    ply.src = data;
+    ply.play();
+    $('#song_name').text("歌曲名:" + data);
 }
+
 function showLogBig(){
-	$('.zhezhaoceng').css({"display":"block"});
+    $('.zhezhaoceng').css({"display":"block"});
 }
+
 $(document).ready(function() {
     // 获取文章数据
     $.ajax({
@@ -40,17 +45,17 @@ $(document).ready(function() {
                 var encodedAudioPath = encodeURIComponent(article.audio_path);
                 var encodedTitle = encodeURIComponent(article.title);
                 var encodedAuthor = encodeURIComponent(article.author);
-                var encodedAlbumArt = encodeURIComponent(article.album_art || 'public/img/default-album.jpg'); // 假设有 album_art 字段
+                var encodedAlbumArt = encodeURIComponent(article.album_art || 'img/default-album.jpg'); // 动态专辑封面
 
                 var listItem = `
                     <li>
                         <div class="list_item_top">
                             <div class="item_pic">
                                 <a href="#">
-                                    <img src="img/recommond1.jpg" alt="${article.title}" />
+                                    <img src="${article.album_art || 'img/default-album.jpg'}" alt="${article.title}" onerror="this.onerror=null;this.src='img/default-album.jpg';" />
                                     <span>${article.author}</span>
                                 </a>
-                                <a class="icon-play" href="player.html?audio=${encodedAudioPath}&title=${encodedTitle}&author=${encodedAuthor}&album=${encodedAlbumArt}">
+                                <a class="icon-play" href="player.html?audio=${encodedAudioPath}&title=${encodedTitle}&author=${encodedAuthor}&album=${encodedAlbumArt}&article_id=${article.id}">
                                     <i class="glyphicon glyphicon-expand"></i>
                                 </a>
                             </div>
@@ -72,6 +77,7 @@ $(document).ready(function() {
         }
     });
 });
+
 $(document).ready(function() {
     // 获取文章数据
     $.ajax({
@@ -87,17 +93,17 @@ $(document).ready(function() {
                 var encodedAudioPath = encodeURIComponent(article.audio_path);
                 var encodedTitle = encodeURIComponent(article.title);
                 var encodedAuthor = encodeURIComponent(article.author);
-                var encodedAlbumArt = encodeURIComponent(article.album_art || 'public/img/default-album.jpg'); // 假设有 album_art 字段
+                var encodedAlbumArt = encodeURIComponent(article.album_art || 'img/default-album.jpg'); // 动态专辑封面
 
                 var listItem = `
                     <li>
                         <div class="list_item_top">
                             <div class="item_pic">
                                 <a href="#">
-                                    <img src="img/recommond1.jpg" alt="${article.title}" />
+                                    <img src="${article.album_art || 'img/default-album.jpg'}" alt="${article.title}" onerror="this.onerror=null;this.src='img/default-album.jpg';" />
                                     <span>${article.author}</span>
                                 </a>
-                                <a class="icon-play" href="player.html?audio=${encodedAudioPath}&title=${encodedTitle}&author=${encodedAuthor}&album=${encodedAlbumArt}">
+                                <a class="icon-play" href="player.html?audio=${encodedAudioPath}&title=${encodedTitle}&author=${encodedAuthor}&album=${encodedAlbumArt}&article_id=${article.id}">
                                     <i class="glyphicon glyphicon-expand"></i>
                                 </a>
                             </div>
@@ -143,6 +149,7 @@ $(document).ready(function() {
         }
     });
 });
+
 $(document).ready(function() {
     // 获取JWT令牌（假设存储在localStorage中）
     const token = localStorage.getItem('token');
@@ -161,14 +168,14 @@ $(document).ready(function() {
                 var encodedAudioPath = encodeURIComponent(article.audio_path);
                 var encodedTitle = encodeURIComponent(article.title);
                 var encodedAuthor = encodeURIComponent(article.author);
-                var encodedAlbumArt = encodeURIComponent(article.album_art || 'public/img/default-album.jpg'); // 假设有 album_art 字段
+                var encodedAlbumArt = encodeURIComponent(article.album_art || '/img/default-album.jpg'); // 动态专辑封面
 
                 var listItem = `
                     <li>
                         <div class="list_item_top">
                             <div class="item_pic">
                                 <a href="#">
-                                    <img src="img/recommond1.jpg" alt="${article.title}" />
+                                    <img src="${article.album_art || 'img/default-album.jpg'}" alt="${article.title}" onerror="this.onerror=null;this.src='img/default-album.jpg';" />
                                     <span>${article.author}</span>
                                 </a>
                                 <a class="icon-play" href="player.html?audio=${encodedAudioPath}&title=${encodedTitle}&author=${encodedAuthor}&album=${encodedAlbumArt}&article_id=${article.id}">
@@ -254,4 +261,3 @@ $(document).ready(function() {
         }
     });
 });
-
